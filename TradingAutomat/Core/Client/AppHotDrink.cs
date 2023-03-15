@@ -18,7 +18,7 @@ namespace App.Core.Client
                 new RequestTemp<HotDrink>()
             };
             IAutomat<HotDrink> automat = new Automat<HotDrink>();
-            IDataProvider<HotDrink> provider = new FileProvider<HotDrink>("C:/Users/Nikolai/source/repos/GB/TradingAutomat/TradingAutomat/Data.txt");
+            IDataProvider<HotDrink> provider = new FileProvider<HotDrink>("TradingAutomat/TradingAutomat/Data.txt");
             Presenter<HotDrink> presenter = new Presenter<HotDrink>(view, automat, provider, req);
             presenter.loadFeed();
 
