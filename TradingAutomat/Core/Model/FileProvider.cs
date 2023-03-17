@@ -18,12 +18,22 @@ namespace App.Core.Model
             var file = File.ReadLines(_fileName);
             String temp = string.Empty;
 
-            foreach (var line in file)
+            foreach (var line in file.Select((value, i) => (value, i)))
             {
-                var data = line.Split("#");
-                list.Add(new HotDrink(data[0], int.Parse(data[1]), int.Parse(data[2])) as T);
+                
+                try
+                {
+                    var data = line.value.Split("#");
+                    list.Add(new HotDrink(data[0], int.Parse(data[1]), int.Parse(data[2])) as T);
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine($"Error read data in line: {line.i + 1}\n{line.value}\n");
+                    continue;
+                }
+                
             }
-
+            
             return list;
 
         }
