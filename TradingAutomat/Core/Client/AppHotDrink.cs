@@ -2,6 +2,7 @@
 using App.Core.Presenter;
 using App.Core.Service;
 using App.Core.View;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace App.Core.Client
 {
@@ -18,14 +19,15 @@ namespace App.Core.Client
                 new RequestTemp<HotDrink>()
             };
             IAutomat<HotDrink> automat = new Automat<HotDrink>();
-            IDataProvider<HotDrink> provider = new FileProvider<HotDrink>("TradingAutomat/TradingAutomat/Data.txt");
+            IDataProvider<HotDrink> provider = new FileProvider<HotDrink>("C:\\Users\\Nikolai\\source\\repos\\GB\\TradingAutomat\\TradingAutomat\\Data.txt");
             Presenter<HotDrink> presenter = new Presenter<HotDrink>(view, automat, provider, req);
             presenter.loadFeed();
 
             while (true)
             {
-                Console.WriteLine(" 1 - Запрос  2 - Вывести все");
+                Console.WriteLine(" 1 - Запрос  2 - Вывести все товары 3 - Выход");
                 var key = Console.ReadLine();
+                Console.Clear();
                 switch (key)
                 {
                     case "1":
@@ -34,7 +36,11 @@ namespace App.Core.Client
                     case "2":
                         presenter.getAllProduct();
                         break;
-
+                    case "3":
+                        Console.WriteLine("Приложение закрыто");
+                        presenter.saveData();
+                        Environment.Exit(0);
+                        break;
                     default:
                         Console.WriteLine("Такой команды нет");
                         break;

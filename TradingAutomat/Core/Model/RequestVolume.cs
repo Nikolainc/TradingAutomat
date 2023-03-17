@@ -6,13 +6,13 @@ namespace App.Core.Model
     public class RequestVolume<T> : IRequest<T> where T : Drink
     {
 
-        private int _volume;
+        private int _reqVolume;
 
-        public RequestVolume() => _volume = -1;
+        public RequestVolume() => _reqVolume = -1;
 
         public List<T> Filter(List<T> request)
         {
-            if (_volume == -1)
+            if (_reqVolume == -1)
             {
 
                 return request;
@@ -21,14 +21,14 @@ namespace App.Core.Model
             else
             {
 
-                return request.Where(element => element._volume.Equals(_volume)).ToList();
+                return request.Where(element => element.Volume.Equals(_reqVolume)).ToList();
 
             }
         }
 
         public void SetRequest(string value)
         {
-            if (!int.TryParse(value, out _volume))
+            if (!int.TryParse(value, out _reqVolume))
             {
                 Console.WriteLine("Error input");
             }

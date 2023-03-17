@@ -6,13 +6,13 @@ namespace App.Core.Model
     public class RequestName<T> : IRequest<T> where T : Drink
     {
 
-        private String _name;
+        private String _reqName;
 
-        public RequestName() => _name = string.Empty;
+        public RequestName() => _reqName = string.Empty;
 
         public List<T> Filter(List<T> request)
         {
-            if (_name == string.Empty)
+            if (_reqName == string.Empty)
             {
 
                 return request;
@@ -21,14 +21,14 @@ namespace App.Core.Model
             else
             {
 
-                return request.Where(element => element._name.Equals(_name)).ToList();
+                return request.Where(element => element.Name.Equals(_reqName)).ToList();
 
             }
         }
 
         public void SetRequest(string value)
         {
-            _name = value;
+            _reqName = value;
         }
 
         public override string ToString()

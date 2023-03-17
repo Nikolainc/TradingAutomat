@@ -1,4 +1,4 @@
-﻿Latte#150#50
+Latte#150#50
 Latte#250#50
 Coffee#150#70
 Coffee#250#70

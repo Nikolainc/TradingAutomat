@@ -44,6 +44,7 @@ namespace App.Core.Presenter
             }
 
             var products = _automat.GetProducts(_requests);
+            Console.Clear();
 
             foreach (var prod in products)
             {

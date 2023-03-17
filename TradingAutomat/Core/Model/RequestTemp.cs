@@ -6,13 +6,13 @@ namespace App.Core.Model
     public class RequestTemp<T> : IRequest<T> where T : HotDrink
     {
 
-        private int _temp;
+        private int _reqTemp;
 
-        public RequestTemp() => _temp = -1;
+        public RequestTemp() => _reqTemp = -1;
 
         public List<T> Filter(List<T> request)
         {
-            if (_temp == -1)
+            if (_reqTemp == -1)
             {
 
                 return request;
@@ -21,14 +21,14 @@ namespace App.Core.Model
             else
             {
 
-                return request.Where(element => element._temp.Equals(_temp)).ToList();
+                return request.Where(element => element.Temp.Equals(_reqTemp)).ToList();
 
             }
         }
 
         public void SetRequest(string value)
         {
-            if (!int.TryParse(value, out _temp))
+            if (!int.TryParse(value, out _reqTemp))
             {
                 Console.WriteLine("Error input");
             }

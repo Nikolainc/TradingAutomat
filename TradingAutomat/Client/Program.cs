@@ -6,6 +6,7 @@ namespace App.Client
     {
         private static void Main(string[] args)
         {
+            
             AppHotDrink.ButtonClick();
 
         }

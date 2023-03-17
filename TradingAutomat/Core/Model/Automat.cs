@@ -5,12 +5,14 @@ namespace App.Core.Model
     public class Automat<T> : IAutomat<T> where T : Drink
     {
 
-        public List<T> _products;
+        private List<T> _products;
 
         public Automat()
         {
             _products = new List<T>();
         }
+
+        public List<T> Products { get => _products; private set => _products = value; }
 
         public bool AddProduct(T product)
         {

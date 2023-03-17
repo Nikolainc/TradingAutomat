@@ -32,11 +32,11 @@ namespace App.Core.Model
         {
             try
             {
-                var writer = File.AppendText(_fileName);
+                var writer = File.CreateText(_fileName);
 
                 foreach (var prod in data)
                 {
-                    writer.WriteLine($"{prod._name}#{prod._volume}#{prod._temp}\n");
+                    writer.WriteLine($"{prod.Name}#{prod.Volume}#{prod.Temp}");
                 }
 
                 writer.Flush();

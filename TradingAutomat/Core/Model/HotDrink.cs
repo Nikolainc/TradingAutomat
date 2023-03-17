@@ -3,7 +3,9 @@
     public class HotDrink : Drink
     {
 
-        public int _temp;
+        private int _temp;
+
+        public int Temp { get => _temp; private set => _temp = value; }
 
         public HotDrink(string name, int volume, int temp) : base(name, volume)
         {
@@ -12,19 +14,19 @@
 
         public override string ToString()
         {
-            return String.Format($"{base.ToString()}, Temperture: {this._temp} C");
+            return String.Format($"{base.ToString()}, Temperture: {Temp} C");
         }
 
         public override bool Equals(object? obj)
         {
             return obj is HotDrink drink &&
                    base.Equals(obj) &&
-                   _temp == drink._temp;
+                   Temp == drink.Temp;
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(base.GetHashCode(), _temp);
+            return HashCode.Combine(base.GetHashCode(), Temp);
         }
     }
 }
